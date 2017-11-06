@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BeingHiredFor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Buildings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="initiationDate" Type="date" Nullable="false" />
+    <Property Name="fk_hiredfor" Type="int" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="cellphone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="startDate" Type="date" Nullable="false" />
+    <Property Name="service_equipmentneeded" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="aditional_service" Type="nvarchar" MaxLength="500" />
+    <Property Name="fk_companylist" Type="int" />
+    <Property Name="another_company" Type="nvarchar" MaxLength="250" />
+    <Property Name="aditional_info" Type="nvarchar" MaxLength="500" />
+    <Property Name="fk_buildingaccess" Type="int" />
+    <Property Name="another_building" Type="nvarchar" MaxLength="500" />
+    <Property Name="restricted_access" Type="nvarchar" MaxLength="500" />
+    <Property Name="hiringManagerEmail" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Employees.dbo.EmployeeDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmployeeDetails">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="fullName" />
+      <PropertyRef Name="email" />
+      <PropertyRef Name="cellphone" />
+      <PropertyRef Name="service_equipmentneeded" />
+      <PropertyRef Name="hiringManagerEmail" />
+      <PropertyRef Name="companyName" />
+      <PropertyRef Name="beinghiredFor" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="fullName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="cellphone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="service_equipmentneeded" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="aditional_service" Type="nvarchar" MaxLength="500" />
+    <Property Name="hiringManagerEmail" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="restricted_access" Type="nvarchar" MaxLength="500" />
+    <Property Name="another_building" Type="nvarchar" MaxLength="500" />
+    <Property Name="companyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="buildingName" Type="nvarchar" MaxLength="250" />
+    <Property Name="beinghiredFor" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Employee_Building">
+    <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buildings">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="fk_buildingaccess" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="fk_companylist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_HiredFor">
+    <End Role="BeingHiredFor" Type="Self.BeingHiredFor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BeingHiredFor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="fk_hiredfor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeesModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BeingHiredFor" EntityType="Self.BeingHiredFor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeDetails" EntityType="Self.EmployeeDetails" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmployeeDetails].[id] AS [id], 
+    [EmployeeDetails].[fullName] AS [fullName], 
+    [EmployeeDetails].[email] AS [email], 
+    [EmployeeDetails].[cellphone] AS [cellphone], 
+    [EmployeeDetails].[service_equipmentneeded] AS [service_equipmentneeded], 
+    [EmployeeDetails].[aditional_service] AS [aditional_service], 
+    [EmployeeDetails].[hiringManagerEmail] AS [hiringManagerEmail], 
+    [EmployeeDetails].[restricted_access] AS [restricted_access], 
+    [EmployeeDetails].[another_building] AS [another_building], 
+    [EmployeeDetails].[companyName] AS [companyName], 
+    [EmployeeDetails].[buildingName] AS [buildingName], 
+    [EmployeeDetails].[beinghiredFor] AS [beinghiredFor]
+    FROM [dbo].[EmployeeDetails] AS [EmployeeDetails]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Employee_Building" Association="Self.FK_Employee_Building">
+      <End Role="Buildings" EntitySet="Buildings" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Company" Association="Self.FK_Employee_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_HiredFor" Association="Self.FK_Employee_HiredFor">
+      <End Role="BeingHiredFor" EntitySet="BeingHiredFor" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

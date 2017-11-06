@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
+<body>
+<input id='input' type='text' /><button onclick="btnClick();">Update title</button><br />
+</body>
+</html>
+<script>
+function btnClick() {
+document.title = $('#input').val();
+$.ajax({
+url: '/', success: function (result) {
+var a = new Array(
+"%26lt%3Bhtml%26gt%3B",
+"%26lt%3Bhead%26gt%3B",
+"%20%20%20%20%26lt%3Bscript%20src%3D'https%3A%2F%2Fajax.googleapis.com%2Fajax%2Flibs%2Fjquery%2F3.2.1%2Fjquery.min.js'%26gt%3B%26lt%3B%2Fscript%26gt%3B",
+"%26lt%3B%2Fhead%26gt%3B",
+"%26lt%3Bbody%26gt%3B",
+"%20%20%20%20%26lt%3Binput%20id%3D'input'%20type%3D'text'%20%2F%26gt%3B%26lt%3Bbutton%20onclick%3D'btnClick()%3B'%26gt%3BUpdate%20title%26lt%3B%2Fbutton%26gt%3B%26lt%3Bbr%20%2F%26gt%3B",
+"%26lt%3B%2Fbody%26gt%3B",
+"%26lt%3B%2Fhtml%26gt%3B",
+"%26lt%3Bscript%26gt%3B",
+"function btnClick() {",
+"document.title = $('#input').val();",
+"$.ajax({",
+"url: '/', success: function (result) {",
+"var a = new Array(",
+"%22{0}",
+"%22);",
+"for (i = 0; i < a.length; i++)",
+"if (a[i] != %22%2522%7B0%7D%22)",
+"document.body.innerHTML = document.body.innerHTML + unescape(a[i]) +  '%26lt%3Bbr%2F%26gt%3B';",
+"else",
+"document.body.innerHTML = document.body.innerHTML +  %22%5C%22%22+ a.join('%22%2C%26lt%3Bbr%2F%26gt%3B%22');",
+"} });",
+"}",
+"%26lt%3B%2Fscript%26gt%3B"
+);
+for (i = 0; i < a.length; i++)
+if (a[i] != "%22{0}")
+document.body.innerHTML = document.body.innerHTML + unescape(a[i]) + '<br/>';
+else
+document.body.innerHTML = document.body.innerHTML + "\"" + a.join('",<br/>"');
+} });
+}
+</script>

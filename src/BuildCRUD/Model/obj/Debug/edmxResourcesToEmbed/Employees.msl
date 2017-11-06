@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeesModelStoreContainer" CdmEntityContainer="EmployeesEntities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="EmployeesModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BeingHiredFors">
+      <EntityTypeMapping TypeName="EmployeesModel.BeingHiredFor">
+        <MappingFragment StoreEntitySet="BeingHiredFor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EmployeesModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="fk_buildingaccess" ColumnName="fk_buildingaccess" />
+          <ScalarProperty Name="hiringManagerEmail" ColumnName="hiringManagerEmail" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="initiationDate" ColumnName="initiationDate" />
+          <ScalarProperty Name="fk_hiredfor" ColumnName="fk_hiredfor" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="service_equipmentneeded" ColumnName="service_equipmentneeded" />
+          <ScalarProperty Name="aditional_service" ColumnName="aditional_service" />
+          <ScalarProperty Name="fk_companylist" ColumnName="fk_companylist" />
+          <ScalarProperty Name="another_company" ColumnName="another_company" />
+          <ScalarProperty Name="aditional_info" ColumnName="aditional_info" />
+          <ScalarProperty Name="another_building" ColumnName="another_building" />
+          <ScalarProperty Name="restricted_access" ColumnName="restricted_access" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buildings">
+      <EntityTypeMapping TypeName="EmployeesModel.Building">
+        <MappingFragment StoreEntitySet="Buildings">
+          <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="EmployeesModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeDetails">
+      <EntityTypeMapping TypeName="EmployeesModel.EmployeeDetail">
+        <MappingFragment StoreEntitySet="EmployeeDetails">
+          <ScalarProperty Name="beinghiredFor" ColumnName="beinghiredFor" />
+          <ScalarProperty Name="buildingName" ColumnName="buildingName" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="another_building" ColumnName="another_building" />
+          <ScalarProperty Name="restricted_access" ColumnName="restricted_access" />
+          <ScalarProperty Name="hiringManagerEmail" ColumnName="hiringManagerEmail" />
+          <ScalarProperty Name="aditional_service" ColumnName="aditional_service" />
+          <ScalarProperty Name="service_equipmentneeded" ColumnName="service_equipmentneeded" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

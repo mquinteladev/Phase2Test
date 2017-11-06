@@ -1,0 +1,9 @@
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\bin\Debug\EmployeeDatabase.dacpac
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\bin\Debug\EmployeeDatabase.dll
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\bin\Debug\EmployeeDatabase.pdb
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\EmployeeDatabase.dll
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\EmployeeDatabase.pdb
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\Model.xml
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\refactor.xml
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\postdeploy.sql
+C:\Personal Docs\Backup\src\BuildCRUD\EmployeeDatabase\obj\Debug\predeploy.sql

@@ -1,0 +1,58 @@
+﻿<section class="mainbar" data-ng-controller="employeeList as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="widget wviolet">
+                    <div data-cc-widget-header title="{{vm.title}}"></div>
+                    <div class="widget-content user">
+                        
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-2">Full Name</th>
+                                    <th class="col-xs-2">Personal Email</th>
+                                    <th class="col-xs-2">Being Hired For</th>
+                                    <th class="col-xs-2">Personal Number</th>
+                                    <th class="col-xs-2">Hiring Manager's Email</th>
+                                    <th class="col-xs-2">Employee Company work for</th>
+                                    <th class="col-xs-2">Update Employee</th>
+                                    <th class="col-xs-2">Remove Employee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="u in vm.employees">
+                                    <td class="col-xs-2">{{u.fullName}}</td>
+                                    <td class="col-xs-2">{{u.email}}</td>
+                                    <td class="col-xs-2">{{u.beinghiredFor}}</td>
+                                    <td class="col-xs-2">{{u.cellphone}}</td>
+                                    <td class="col-xs-2">{{u.hiringManagerEmail}}</td>
+                                    <td class="col-xs-2">{{u.companyName}}</td>
+                                    <td class="col-xs-2">
+
+                                        <button   type="button" class="btn-plain btn btn-primary" data-ng-click="vm.Update(u.id)">
+                                            Update
+                                        </button>
+
+                                    </td>
+                                    <td class="col-xs-2">
+
+                                        <button  type="button" class="btn-plain btn btn-primary" data-ng-click="vm.Remove(u.id)">
+                                            Delete
+                                        </button>
+
+                                    </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

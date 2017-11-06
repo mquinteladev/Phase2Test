@@ -1,0 +1,10 @@
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\Model.dll.config
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\Model.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\Model.pdb
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\EntityFramework.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\EntityFramework.xml
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Release\EntityFramework.SqlServer.xml
+C:\Personal Docs\Backup\src\BuildCRUD\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+C:\Personal Docs\Backup\src\BuildCRUD\Model\obj\Release\Model.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\obj\Release\Model.pdb

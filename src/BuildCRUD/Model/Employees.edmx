@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmployeesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeingHiredFor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="labelDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="initiationDate" Type="date" Nullable="false" />
+          <Property Name="fk_hiredfor" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="cellphone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="service_equipmentneeded" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="aditional_service" Type="nvarchar" MaxLength="500" />
+          <Property Name="fk_companylist" Type="int" />
+          <Property Name="another_company" Type="nvarchar" MaxLength="250" />
+          <Property Name="aditional_info" Type="nvarchar" MaxLength="500" />
+          <Property Name="fk_buildingaccess" Type="int" />
+          <Property Name="another_building" Type="nvarchar" MaxLength="500" />
+          <Property Name="restricted_access" Type="nvarchar" MaxLength="500" />
+          <Property Name="hiringManagerEmail" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Employees.dbo.EmployeeDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmployeeDetails">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fullName" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="cellphone" />
+            <PropertyRef Name="service_equipmentneeded" />
+            <PropertyRef Name="hiringManagerEmail" />
+            <PropertyRef Name="companyName" />
+            <PropertyRef Name="beinghiredFor" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="cellphone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="service_equipmentneeded" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="aditional_service" Type="nvarchar" MaxLength="500" />
+          <Property Name="hiringManagerEmail" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="restricted_access" Type="nvarchar" MaxLength="500" />
+          <Property Name="another_building" Type="nvarchar" MaxLength="500" />
+          <Property Name="companyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="buildingName" Type="nvarchar" MaxLength="250" />
+          <Property Name="beinghiredFor" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Employee_Building">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_buildingaccess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_companylist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_HiredFor">
+          <End Role="BeingHiredFor" Type="Self.BeingHiredFor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BeingHiredFor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_hiredfor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeesModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BeingHiredFor" EntityType="Self.BeingHiredFor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeDetails" EntityType="Self.EmployeeDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeeDetails].[id] AS [id], 
+    [EmployeeDetails].[fullName] AS [fullName], 
+    [EmployeeDetails].[email] AS [email], 
+    [EmployeeDetails].[cellphone] AS [cellphone], 
+    [EmployeeDetails].[service_equipmentneeded] AS [service_equipmentneeded], 
+    [EmployeeDetails].[aditional_service] AS [aditional_service], 
+    [EmployeeDetails].[hiringManagerEmail] AS [hiringManagerEmail], 
+    [EmployeeDetails].[restricted_access] AS [restricted_access], 
+    [EmployeeDetails].[another_building] AS [another_building], 
+    [EmployeeDetails].[companyName] AS [companyName], 
+    [EmployeeDetails].[buildingName] AS [buildingName], 
+    [EmployeeDetails].[beinghiredFor] AS [beinghiredFor]
+    FROM [dbo].[EmployeeDetails] AS [EmployeeDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Employee_Building" Association="Self.FK_Employee_Building">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Company" Association="Self.FK_Employee_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_HiredFor" Association="Self.FK_Employee_HiredFor">
+            <End Role="BeingHiredFor" EntitySet="BeingHiredFor" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BeingHiredFor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="labelDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="EmployeesModel.FK_Employee_HiredFor" FromRole="BeingHiredFor" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="initiationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fk_hiredfor" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="service_equipmentneeded" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aditional_service" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fk_companylist" Type="Int32" />
+          <Property Name="another_company" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="aditional_info" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="another_building" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="restricted_access" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="hiringManagerEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fk_buildingaccess" Type="Int32" />
+          <NavigationProperty Name="BeingHiredFor" Relationship="EmployeesModel.FK_Employee_HiredFor" FromRole="Employee" ToRole="BeingHiredFor" />
+          <NavigationProperty Name="Building" Relationship="EmployeesModel.FK_Employee_Building" FromRole="Employee" ToRole="Building" />
+          <NavigationProperty Name="Company" Relationship="EmployeesModel.FK_Employee_Company" FromRole="Employee" ToRole="Company" />
+        </EntityType>
+        <EntityContainer Name="EmployeesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="BeingHiredFors" EntityType="Self.BeingHiredFor" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Buildings" EntityType="EmployeesModel.Building" />
+          <EntitySet Name="Companies" EntityType="EmployeesModel.Company" />
+          <EntitySet Name="EmployeeDetails" EntityType="EmployeesModel.EmployeeDetail" />
+          <AssociationSet Name="FK_Employee_HiredFor" Association="EmployeesModel.FK_Employee_HiredFor">
+            <End Role="BeingHiredFor" EntitySet="BeingHiredFors" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Building" Association="EmployeesModel.FK_Employee_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Company" Association="EmployeesModel.FK_Employee_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="labelDescription" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EmployeesModel.FK_Employee_Building" FromRole="Building" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="labelDescription" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EmployeesModel.FK_Employee_Company" FromRole="Company" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmployeeDetail">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="fullName" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="cellphone" />
+            <PropertyRef Name="service_equipmentneeded" />
+            <PropertyRef Name="hiringManagerEmail" />
+            <PropertyRef Name="companyName" />
+            <PropertyRef Name="beinghiredFor" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cellphone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="service_equipmentneeded" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="aditional_service" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="hiringManagerEmail" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="restricted_access" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="another_building" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="companyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="buildingName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="beinghiredFor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Employee_HiredFor">
+          <End Type="EmployeesModel.BeingHiredFor" Role="BeingHiredFor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EmployeesModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BeingHiredFor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_hiredfor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Building">
+          <End Type="EmployeesModel.Building" Role="Building" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EmployeesModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_buildingaccess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Company">
+          <End Type="EmployeesModel.Company" Role="Company" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EmployeesModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="fk_companylist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeesModelStoreContainer" CdmEntityContainer="EmployeesEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="EmployeesModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BeingHiredFors">
+            <EntityTypeMapping TypeName="EmployeesModel.BeingHiredFor">
+              <MappingFragment StoreEntitySet="BeingHiredFor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="EmployeesModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="fk_buildingaccess" ColumnName="fk_buildingaccess" />
+                <ScalarProperty Name="hiringManagerEmail" ColumnName="hiringManagerEmail" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="initiationDate" ColumnName="initiationDate" />
+                <ScalarProperty Name="fk_hiredfor" ColumnName="fk_hiredfor" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="service_equipmentneeded" ColumnName="service_equipmentneeded" />
+                <ScalarProperty Name="aditional_service" ColumnName="aditional_service" />
+                <ScalarProperty Name="fk_companylist" ColumnName="fk_companylist" />
+                <ScalarProperty Name="another_company" ColumnName="another_company" />
+                <ScalarProperty Name="aditional_info" ColumnName="aditional_info" />
+                <ScalarProperty Name="another_building" ColumnName="another_building" />
+                <ScalarProperty Name="restricted_access" ColumnName="restricted_access" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="EmployeesModel.Building">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="EmployeesModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="labelDescription" ColumnName="labelDescription" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDetails">
+            <EntityTypeMapping TypeName="EmployeesModel.EmployeeDetail">
+              <MappingFragment StoreEntitySet="EmployeeDetails">
+                <ScalarProperty Name="beinghiredFor" ColumnName="beinghiredFor" />
+                <ScalarProperty Name="buildingName" ColumnName="buildingName" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="another_building" ColumnName="another_building" />
+                <ScalarProperty Name="restricted_access" ColumnName="restricted_access" />
+                <ScalarProperty Name="hiringManagerEmail" ColumnName="hiringManagerEmail" />
+                <ScalarProperty Name="aditional_service" ColumnName="aditional_service" />
+                <ScalarProperty Name="service_equipmentneeded" ColumnName="service_equipmentneeded" />
+                <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

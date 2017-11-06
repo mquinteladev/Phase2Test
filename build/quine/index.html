@@ -1,0 +1,139 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <title>Quine Challenge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="page-header">
+        <h2>Michael Quintela Quine Challenge</h2>
+    </div>
+
+    <div class="well well-sm custom-well-small">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">What is a Quine?</h3>
+            </div>
+            <div class="panel-body">
+                A quine is a program which prints its own listing. This means that when the program is run, it must print out precisely those instructions which the programmer wrote as part of the program (including, of course, the instructions that do the printing, and the data used in the printing).
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quine Challenge description</h3>
+            </div>
+            <div class="panel-body">
+                Requirements: Build a single page with a text field and a button. When the button is clicked, change the page title with the text in the text box, then render the quine using Ajax. The solution in the bottom of the page.
+                Use Nancy to build it.
+            </div>
+        </div>
+
+
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="/quinev1">Quine</a></li>
+            <li role="presentation" class="active"><a href="/quinetestv1">File created by quine output</a></li>
+        </ul>
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Quine Code (source from quinev1.html file) (This is not the test file.), to test the quine challange <a href="/quinev1">click here</a> </h3>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-success" role="alert">
+                    <textarea class="boxsizingBorder">
+<html>
+<head>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
+<body>
+<input id='input' type='text' /><button onclick="btnClick();">Update title</button><br />
+</body>
+</html>
+<script>
+function btnClick() {
+document.title = $('#input').val();
+$.ajax({
+url: '/', success: function (result) {
+var a = new Array(
+"%26lt%3Bhtml%26gt%3B",
+"%26lt%3Bhead%26gt%3B",
+"%20%20%20%20%26lt%3Bscript%20src%3D'https%3A%2F%2Fajax.googleapis.com%2Fajax%2Flibs%2Fjquery%2F3.2.1%2Fjquery.min.js'%26gt%3B%26lt%3B%2Fscript%26gt%3B",
+"%26lt%3B%2Fhead%26gt%3B",
+"%26lt%3Bbody%26gt%3B",
+"%20%20%20%20%26lt%3Binput%20id%3D'input'%20type%3D'text'%20%2F%26gt%3B%26lt%3Bbutton%20onclick%3D'btnClick()%3B'%26gt%3BUpdate%20title%26lt%3B%2Fbutton%26gt%3B%26lt%3Bbr%20%2F%26gt%3B",
+"%26lt%3B%2Fbody%26gt%3B",
+"%26lt%3B%2Fhtml%26gt%3B",
+"%26lt%3Bscript%26gt%3B",
+"function btnClick() {",
+"document.title = $('#input').val();",
+"$.ajax({",
+"url: '/', success: function (result) {",
+"var a = new Array(",
+"%22{0}",
+"%22);",
+"for (i = 0; i < a.length; i++)",
+"if (a[i] != %22%2522%7B0%7D%22)",
+"document.body.innerHTML = document.body.innerHTML + unescape(a[i]) +  '%26lt%3Bbr%2F%26gt%3B';",
+"else",
+"document.body.innerHTML = document.body.innerHTML +  %22%5C%22%22+ a.join('%22%2C%26lt%3Bbr%2F%26gt%3B%22');",
+"} });",
+"}",
+"%26lt%3B%2Fscript%26gt%3B"
+);
+for (i = 0; i < a.length; i++)
+    if (a[i] != "%22{0}")
+        document.body.innerHTML = document.body.innerHTML + unescape(a[i]) + '<br/>';
+    else
+        document.body.innerHTML = document.body.innerHTML + "\"" + a.join('",<br/>"');
+}
+});
+}
+</script>
+                </textarea>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>
+
+<style>
+    .well.custom-well-small {
+        width: 80%;
+        margin: 0 auto;
+
+    }
+
+    textarea {
+        border: 1px solid #999999;
+        width: 100%;
+        margin: 5px 0;
+        padding: 3px;
+        height: 100vh;
+    }
+
+    .boxsizingBorder {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>

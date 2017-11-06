@@ -1,0 +1,235 @@
+﻿<section id="employee-view" class="mainbar" data-ng-controller="employee as vm">
+
+    <section class="matter">
+        <div class="container">
+            <!--<div class="well well-sm">
+                <h3 class="panel-title label-header">{{vm.title}}</h3>
+                <h1 class="panel-title ">{{vm.message}}</h1>
+            </div>-->
+
+            <div class="freebirdFormviewerViewHeaderTitleRow">
+                <div class="freebirdFormviewerViewHeaderTitle" dir="auto" role="heading" aria-level="1">New Employee Initiation</div>
+            </div>
+
+            <div class="freebirdFormviewerViewHeaderDescription" dir="auto">Complete this form whenever a new employee is being initiated. Indicate all services and equipment needed.</div>
+
+            <div class="freebirdFormviewerViewHeaderRequiredLegend" aria-hidden="true" dir="auto">* Required</div>
+
+            <div class="freebirdFormviewerViewFormContent">
+
+                <form name="form">
+
+                    <div data-ng-show="vm.viewModel.operationCount == 1">
+
+
+                        <div class="form-group   freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="startDate">Today's Date:<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+
+                            <div data-ng-class="{ 'has-error' : form.startDate.$invalid && !form.startDate.$pristine }">
+                                <p class="input-group row datePicker-group">
+
+                                    <input type="text"
+                                           placeholder="Your answer"
+                                           autocomplete="off"
+                                           name="payStartDate"
+                                           class="quantumWizTextinputPaperinputInput exportInput"
+                                           datepicker-popup="MM/dd/yyyy"
+                                           ng-model="vm.viewModel.form.startDate"
+                                           is-open="vm.viewModel.StartDateOpened"
+                                           datepicker-options="vm.viewModel.StartDatedatepickerOptions"
+                                           ng-required="true"
+                                           close-text="Close"
+                                           date-disabled="vm.viewModel.dateDisabled(date, mode)" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.viewModel.openStartDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <p ng-show="form.startDate.$invalid && !form.startDate.$pristine" class="help-block">Your answer</p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div >Hiring Manager's email address<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.hiringManagerEmail.$invalid && !form.hiringManagerEmail.$pristine }"> 
+                                <input  name="hiringManagerEmail" data-ng-model="vm.viewModel.form.hiringManagerEmail" tabindex="0" class="quantumWizTextinputPaperinputInput exportInput"  placeholder="Your answer"  dir="auto" aria-label="Hiring Manager&amp;#39;s email address" required type="text" autocomplete="off"   data-initial-dir="auto"> 
+                                <p ng-show="form.hiringManagerEmail.$invalid && !form.hiringManagerEmail.$pristine" class="help-block">Your answer</p>
+                            </div>
+                        </div>
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="fullName">New Employee's Full Name<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.fullName.$invalid && !form.fullName.$pristine }">
+                                <input maxlength="250" type="text" name="fullName" data-ng-model="vm.viewModel.form.fullName" class="quantumWizTextinputPaperinputInput exportInput" placeholder="Your answer" required />
+                                <p ng-show="form.fullName.$invalid && !form.fullName.$pristine" class="help-block">Your answer</p>
+                            </div>
+                        </div>
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="fk_hiredfor">Position new employee is being hired for<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.fk_hiredfor.$invalid &&  vm.viewModel.form.fk_hiredfor == -1 }">
+                                <div ng-repeat="x in vm.viewModel.beingHiredForList">
+
+                                    <label class="docssharedWizToggleLabeledContainer freebirdFormviewerViewItemsRadioChoice">
+                                        <div class="exportLabelWrapper">
+                                            <input type="radio" name="fk_hiredfor" value="{{x.id}}" data-ng-model="vm.viewModel.form.fk_hiredfor">
+                                            <div class="docssharedWizToggleLabeledContent">
+                                                <div class="docssharedWizToggleLabeledPrimaryText">
+                                                    <span class="docssharedWizToggleLabeledLabelText exportLabel freebirdFormviewerViewItemsRadioLabel" dir="auto">{{x.labelDescription}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label> 
+                                </div>
+                                <p ng-show="form.fk_hiredfor.$invalid &&  vm.viewModel.form.fk_hiredfor == -1" class="help-block">Your answer</p>
+                            </div>
+                        </div>
+                      
+                          <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="email">New Employee's Personal Email<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.email.$invalid && !form.email.$pristine }">
+                                <input maxlength="250" type="text" name="email" data-ng-model="vm.viewModel.form.email" class="quantumWizTextinputPaperinputInput exportInput" placeholder="Your answer" required />
+                                <p ng-show="form.email.$invalid && !form.email.$pristine" class="help-block">Your answer</p>
+                            </div>
+                        </div>
+
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="cellphone">New Employee's Mobile Number <span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.cellphone.$invalid && !form.cellphone.$pristine }">
+                                <input maxlength="250" type="text" name="cellphone" data-ng-model="vm.viewModel.form.cellphone" class="quantumWizTextinputPaperinputInput exportInput" placeholder="Your answer" required />
+                                <p ng-show="form.cellphone.$invalid && !form.cellphone.$pristine" class="help-block">Your answer</p>
+                            </div>
+                        </div>
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="initiationDate">Start Date:<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+
+                            <div data-ng-class="{ 'has-error' : form.initiationDate.$invalid && !form.initiationDate.$pristine }">
+                                <p class="input-group row datePicker-group">
+
+                                    <input type="text"
+                                           name="initiationDate"
+                                           placeholder="Your answer"
+                                           autocomplete="off"
+                                           class="quantumWizTextinputPaperinputInput exportInput"
+                                           datepicker-popup="MM/dd/yyyy"
+                                           ng-model="vm.viewModel.form.initiationDate"
+                                           is-open="vm.viewModel.InitiationDateOpened"
+                                           datepicker-options="vm.viewModel.InitiationDatedatepickerOptions"
+                                           ng-required="true"
+                                           close-text="Close"
+                                           date-disabled="vm.viewModel.dateDisabled(date, mode)" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="vm.viewModel.openStartDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                                <p ng-show="form.initiationDate.$invalid && !form.initiationDate.$pristine" class="help-block">Your start date is required.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div data-ng-show="vm.viewModel.operationCount == 2">
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="service_equipmentneeded">Services & Equipment Needed<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' :  vm.viewModel.form.service_equipmentneeded == '' }">
+                                <div ng-repeat="x in vm.viewModel.service_equipmentneededList">
+
+                                    <label class="docssharedWizToggleLabeledContainer freebirdFormviewerViewItemsCheckboxContainer">
+                                        <div class="exportLabelWrapper">
+                                            <input name="service_equipmentneeded" ng-model="confirmed" ng-change="vm.checkboxchange()"   type="checkbox" value="{{x.equipmentneeded}}">
+                                            <div class="docssharedWizToggleLabeledContent">
+                                                <div class="docssharedWizToggleLabeledPrimaryText">
+                                                    <span class="docssharedWizToggleLabeledLabelText exportLabel freebirdFormviewerViewItemsCheckboxLabel" dir="auto">{{x.equipmentneeded}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <p ng-show="vm.viewModel.form.service_equipmentneeded == ''" class="help-block">Your answer</p>
+                            </div>
+                            </div>
+
+
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="aditional_service">Aditional Service</div>
+                                 <input maxlength="250" type="text" name="aditional_service" data-ng-model="vm.viewModel.form.aditional_service" class="quantumWizTextinputPaperinputInput exportInput" placeholder="Your answer" />
+                                
+                      
+                        </div>
+
+                    </div>
+
+
+                    <div data-ng-show="vm.viewModel.operationCount == 3">
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="company">What company will employee work for?<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.fk_companylist.$invalid &&  vm.viewModel.form.fk_companylist == -1 }">
+                                <div ng-repeat="x in vm.viewModel.companyList">
+
+                                    <label class="docssharedWizToggleLabeledContainer freebirdFormviewerViewItemsRadioChoice">
+                                        <div class="exportLabelWrapper">
+                                            <input type="radio" name="fk_companylist" value="{{x.id}}" data-ng-model="vm.viewModel.form.fk_companylist">
+                                            <div class="docssharedWizToggleLabeledContent">
+                                                <div class="docssharedWizToggleLabeledPrimaryText">
+                                                    <span class="docssharedWizToggleLabeledLabelText exportLabel freebirdFormviewerViewItemsRadioLabel" dir="auto">{{x.labelDescription}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                </div>
+                                <p ng-show="form.fk_companylist.$invalid &&  vm.viewModel.form.fk_companylist == -1 " class="help-block">Your answer</p>
+                            </div>
+                            </div>
+                    </div>
+
+                    <div data-ng-show="vm.viewModel.operationCount == 4">
+                        <div class="freebirdFormviewerViewItemsItemItemTitle">
+                            <div for="company">What buildings will employee need access to?<span class="freebirdFormviewerViewItemsItemRequiredAsterisk">*</span></div>
+                            <div data-ng-class="{ 'has-error' : form.fk_buildingaccess.$invalid &&  vm.viewModel.form.fk_buildingaccess == -1 }">
+                                <div ng-repeat="x in vm.viewModel.buildingList">
+                                     
+                                    <label class="docssharedWizToggleLabeledContainer freebirdFormviewerViewItemsRadioChoice">
+                                        <div class="exportLabelWrapper">
+                                            <input type="radio" name="fk_buildingaccess" value="{{x.id}}" data-ng-model="vm.viewModel.form.fk_buildingaccess">
+                                            <div class="docssharedWizToggleLabeledContent">
+                                                <div class="docssharedWizToggleLabeledPrimaryText">
+                                                    <span class="docssharedWizToggleLabeledLabelText exportLabel freebirdFormviewerViewItemsRadioLabel" dir="auto">{{x.labelDescription}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label> 
+
+                                </div>
+                                <p ng-show="form.fk_buildingaccess.$invalid &&  vm.viewModel.form.fk_buildingaccess == -1 " class="help-block">Your answer</p>
+                            </div>
+                            </div>
+                    </div>
+
+                    <button data-ng-show="vm.viewModel.operationCount <= 4 && vm.viewModel.operationCount >= 2" type="button" class="btn-plain btn btn-primary" data-ng-click="vm.viewModel.Back()">
+                        Back
+                    </button>
+                    <button data-ng-show="vm.viewModel.operationCount < 4" type="button" class="btn-plain btn btn-primary" data-ng-click="vm.viewModel.Next(form)">
+                        Next
+                    </button>
+                    <button data-ng-show="vm.viewModel.operationCount >= 4" type="submit" class="btn-plain btn btn-primary" data-ng-click="vm.viewModel.Save(form)" ng-disabled="vm.viewModel.form.fk_paymentAgreement ==-1">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                    </button>
+
+
+                </form>
+            </div>
+
+
+            <div data-ng-show="vm.isBusy" class="page-splash dissolve-animation">
+                <div data-cc-spinner="vm.spinnerOptions"></div>
+                <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
+            </div>
+
+
+        </div>
+    </section>
+</section>

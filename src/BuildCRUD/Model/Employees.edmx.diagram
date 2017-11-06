@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f08227d1c33048dd93c147e2f8552031" Name="Diagram1">
+        <EntityTypeShape EntityType="EmployeesModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesModel.BeingHiredFor" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesModel.Employee" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesModel.Building" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EmployeesModel.Company" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EmployeesModel.EmployeeDetail" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="EmployeesModel.FK_Employee_HiredFor" />
+        <AssociationConnector Association="EmployeesModel.FK_Employee_Building" />
+        <AssociationConnector Association="EmployeesModel.FK_Employee_Company" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

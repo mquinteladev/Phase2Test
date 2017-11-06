@@ -1,0 +1,9 @@
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\Model.dll.config
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\Model.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\Model.pdb
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\EntityFramework.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\EntityFramework.xml
+C:\Personal Docs\Backup\src\BuildCRUD\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Personal Docs\Backup\src\BuildCRUD\Model\obj\Debug\Model.dll
+C:\Personal Docs\Backup\src\BuildCRUD\Model\obj\Debug\Model.pdb
