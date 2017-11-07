@@ -1,0 +1,16 @@
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\UnitTest.dll.config
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\UnitTest.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\UnitTest.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\DataInfrastructure.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\Model.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\EntityFramework.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\DataInfrastructure.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\Model.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\EntityFramework.xml
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\obj\Debug\UnitTest.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\obj\Debug\UnitTest.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Personal Docs\REPO\src\BuildCRUD\UnitTest\bin\Debug\EntityFramework.SqlServer.xml

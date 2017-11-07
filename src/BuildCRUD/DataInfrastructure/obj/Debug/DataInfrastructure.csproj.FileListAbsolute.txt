@@ -10,3 +10,15 @@ C:\Personal Docs\Backup\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramewo
 C:\Personal Docs\Backup\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramework.SqlServer.xml
 C:\Personal Docs\Backup\src\BuildCRUD\DataInfrastructure\obj\Debug\DataInfrastructure.dll
 C:\Personal Docs\Backup\src\BuildCRUD\DataInfrastructure\obj\Debug\DataInfrastructure.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\DataInfrastructure.dll.config
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\DataInfrastructure.dll
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\DataInfrastructure.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramework.dll
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramework.SqlServer.dll
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\Model.dll
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\Model.pdb
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramework.xml
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\bin\Debug\EntityFramework.SqlServer.xml
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\obj\Debug\DataInfrastructure.csprojResolveAssemblyReference.cache
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\obj\Debug\DataInfrastructure.dll
+C:\Personal Docs\REPO\src\BuildCRUD\DataInfrastructure\obj\Debug\DataInfrastructure.pdb
